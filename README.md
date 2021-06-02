@@ -3,9 +3,9 @@
 **The easier, the better!**
 
 1. Only one single header: log.h
-2. easy to use
+2. Easy to use
 
-// sample code:
+// Sample code:
 
 ```c++
 #include <iostream>
