@@ -3,9 +3,7 @@
 **The easier, the better!**
 
 1. Only one single header: log.h
-2. Easy to use
-
-// Sample code:
+2. Easy to use, the sample code:
 
 ```c++
 #include <iostream>
