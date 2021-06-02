@@ -32,6 +32,9 @@ int main()
 
 **The output:**
 [22:46:55.723] [INFO ] [cst_test.cpp main 211] - str1 2 str3 4 [tid:1236]
+
 [22:46:55.723] [WARN ] [cst_test.cpp main 212] - str1 2 str3 4 [tid:1236]
+
 [22:46:55.724] [ERROR] [cst_test.cpp main 213] - str1 2 str3 4 [tid:1236]
+
 [22:46:55.724] [FATAL] [cst_test.cpp main 214] - str1 2 str3 4 [tid:1236]
