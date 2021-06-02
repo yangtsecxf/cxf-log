@@ -1,2 +1,4 @@
 # cxf-log
-Easy the log work, only one single header: log.h
+Only one single header: log.h
+
+The easier, the better!
