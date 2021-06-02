@@ -2,7 +2,7 @@
 
 **The easier, the better!**
 
-1. Only one single header: log.h
+1. header-only
 2. Easy to use, the sample code:
 
 ```c++
