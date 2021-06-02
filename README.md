@@ -2,8 +2,7 @@
 
 **The easier, the better!**
 
-1. header-only
-2. Easy to use, the sample code:
+Modern c++(c++11), cross-platform, header-only, easy to use, the sample code:
 
 ```c++
 #include <iostream>
