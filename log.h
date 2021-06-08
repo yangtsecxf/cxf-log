@@ -85,11 +85,12 @@ inline void log_ex(TLogLevel level, const char* file, const int line, const char
 		return;
 	}
 
-#ifdef _WIN32
-	file = strrchr(file, '\\') + 1;
-#else
-	file = strrchr(file, '/') + 1;
-#endif
+	const char* end1 = ::strrchr(file, '/');
+	const char* end2 = ::strrchr(file, '\\');
+	if (!end1 || !end2)
+	{
+		file = (end1 > end2) ? end1 + 1 : end2 + 1;
+	}
 
 	std::stringstream ss;
 	std::map<TLogLevel, std::string> map_level{ {kLevelDebug, "[Debug] "} , {kLevelInfo, "[INFO ] "},
