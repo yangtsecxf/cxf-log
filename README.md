@@ -2,10 +2,7 @@
 
 **The easier, the better!**
 
-1. Only one single header: log.h
-2. Easy to use
-
-// Sample code:
+Modern c++(c++11), cross-platform, header-only, easy to use, the sample code:
 
 ```c++
 #include <iostream>
@@ -17,6 +14,7 @@ int main()
 	LOG->set_log_cb([](const TLogLevel log_level, const std::string& log) {
 		std::cout << log << std::endl;
 	});
+	LOG->set_log_level(kLevelInfo);
 
  	DEBUG("str1", 2, "str3", 4.0);
  	INFO("str1", 2, "str3", 4.0);
