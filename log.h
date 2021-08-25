@@ -5,7 +5,7 @@
 #include <map>
 #include <iomanip>
 #include <chrono>
-#include <future> 
+#include <mutex>
 
 
 enum TLogLevel
@@ -27,6 +27,7 @@ class Log
 private:
 	typedef_log_cb log_cb_;
 	TLogLevel log_level_;
+	std::mutex mtx_;
 
 public:
 	Log(const TLogLevel log_level = kLevelInfo)
@@ -43,8 +44,16 @@ public:
 		return &s_o;
 	}
 
-	void set_log_cb(typedef_log_cb log_cb) {log_cb_ = log_cb;}
-	typedef_log_cb get_log_cb() { return log_cb_; }
+	void set_log_cb(typedef_log_cb log_cb) 
+	{
+		std::lock_guard<std::mutex> lock(mtx_);
+		log_cb_ = log_cb;
+	}
+	typedef_log_cb get_log_cb() 
+	{ 
+		std::lock_guard<std::mutex> lock(mtx_);
+		return log_cb_; 
+	}
 
 	void set_log_level(const TLogLevel log_level) { log_level_ = log_level; }
 	TLogLevel get_log_level() { return log_level_; }
@@ -80,7 +89,8 @@ inline typename std::enable_if_t < I < sizeof ...(Tp)> for_each(std::tuple<Tp ..
 template<typename...Args>
 inline void log_ex(TLogLevel level, const char* file, const int line, const char* function, const Args&... rest)
 {
-	if (level < LOG->get_log_level())
+	if (level < LOG->get_log_level() || level > kLevelFatal 
+		|| nullptr == file || nullptr == function)
 	{
 		return;
 	}
